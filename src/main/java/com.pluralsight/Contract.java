@@ -1,56 +1,55 @@
+package  com.pluralsight;
+
 public abstract class Contract {
 
-protected String contractDate;
-protected String name;
-protected String email;
-protected int vehiclesold;
-protected double totalprice;
-protected int monthlypayment;
+    private String date;
+    private String customerName;
+    private String customerEmail;
+    private Vehicle vehicleSold;
+    private double totalPrice;
+    private double monthlyPayment;
 
-    public Contract(String contractDate, String name, String email, int vehiclesold) {
-        this.contractDate = contractDate;
-        this.name = name;
-        this.email = email;
-        this.vehiclesold = vehiclesold;
+    public Contract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
+        this.date = date;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.vehicleSold = vehicleSold;
     }
 
-    public String getContractDate() {
-        return contractDate;
+    public String getDate() {
+        return date;
     }
 
-    public void setContractDate(String contractDate) {
-        this.contractDate = contractDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
-    public int getVehiclesold() {
-        return vehiclesold;
+    public Vehicle getVehicleSold() {
+        return vehicleSold;
     }
 
-    public void setVehiclesold(int vehiclesold) {
-        this.vehiclesold = vehiclesold;
+    public void setVehicleSold(Vehicle vehicleSold) {
+        this.vehicleSold = vehicleSold;
     }
+    public abstract double getTotalPrice();
+
+    public abstract double getMonthlyPayment();
 }
-  public int getTotalPrice() {
-    return Price;
 
-  }
 
-  public int getMonthlyPayment() {
-    return Payment;
-  }
