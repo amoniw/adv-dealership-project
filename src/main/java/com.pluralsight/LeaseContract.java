@@ -1,46 +1,47 @@
 package com.pluralsight;
 
-public class LeaseContract {
-private double originalPrice;
-private double LeasingFee;
-private double MonthlyPayment;
-private boolean LeasingOption;
+public class LeaseContract extends Contract {
 
-    public LeaseContract(double leasingFee, boolean leasingOption) {
-        LeasingFee = leasingFee;
-        LeasingOption = leasingOption;
+    private double expectedEndingValue;
+    private double leaseFee;
+
+    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, double expectedEndingValue, double leaseFee) {
+        super(date, customerName, customerEmail, vehicleSold);
+        this.expectedEndingValue = expectedEndingValue;
+        this.leaseFee = leaseFee;
     }
 
-    public double getLeasingFee() {
-        return LeasingFee;
+    public double getExpectedEndingValue() {
+        return expectedEndingValue;
     }
 
-    public void setLeasingFee(double leasingFee) {
-        LeasingFee = leasingFee;
+    public void setExpectedEndingValue(double expectedEndingValue) {
+        this.expectedEndingValue = expectedEndingValue;
     }
 
-    public boolean isLeasingOption() {
-        return LeasingOption;
+    public double getLeaseFee() {
+        return leaseFee;
     }
 
-    public void setLeasingOption(boolean leasingOption) {
-        LeasingOption = leasingOption;
+    public void setLeaseFee(double leaseFee) {
+        this.leaseFee = leaseFee;
     }
 
     @Override
-public double getTotalPrice(){
-    return (getVehicleSold().getPrice() - expectedEndingValue) + leaseFee;
-}
+    public double getTotalPrice() {
+        return (getVehicleSold().getPrice() - expectedEndingValue) + leaseFee;
+    }
 
-@Override  public double getMonthlyPayment() {
-    int numberOfPayments = 36;
-    double interestRate = 4.0 / 1200;
-    double monthlyPayment = getTotalPrice() * (interestRate * Math.pow(1 + interestRate, numberOfPayments)) / (Math.pow(1 + interestRate, numberOfPayments) - 1);
-    monthlyPayment = Math.round(monthlyPayment * 100);
-    monthlyPayment /= 100;
-    return monthlyPayment;
+    @Override
+    public double getMonthlyPayment() {
+        int numberOfPayments = 36;
+        double interestRate = 4.0 / 1200;
+        double monthlyPayment = getTotalPrice() * (interestRate * Math.pow(1 + interestRate, numberOfPayments)) / (Math.pow(1 + interestRate, numberOfPayments) - 1);
+        monthlyPayment = Math.round(monthlyPayment * 100);
+        monthlyPayment /= 100;
+        return monthlyPayment;
+    }
 }
-
 
 
 
